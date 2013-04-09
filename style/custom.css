@@ -1,0 +1,13 @@
+/* Simple Custom CSS & Settings
+-------------------------------*/
+
+#page-header {
+    background-image: url([[settings:logo]])};
+    background-position: left top;
+    background-repeat: no-repeat;
+}
+
+/* Custom CSS Settings
+-------------------------*/
+[[setting:customcss]]
+

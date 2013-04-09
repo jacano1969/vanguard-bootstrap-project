@@ -15,7 +15,7 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Configuration for Moodle's bootstrap theme.
+ * Moodle's Simple theme, an example of how to make a Bootstrap theme
  *
  * DO NOT MODIFY THIS THEME!
  * COPY IT FIRST, THEN RENAME THE COPY AND MODIFY IT INSTEAD.
@@ -23,31 +23,18 @@
  * For full information about creating Moodle themes, see:
  * http://docs.moodle.org/dev/Themes_2.0
  *
- * @package   Moodle Bootstrap theme
- * @copyright 2013 Bas Brands. www.sonsbeekmedia.nl
- * @authors   Bas Brands, David Scotson. Mary Evans
+ * @package   Moodle Simple theme
+ * @copyright 2013 Martin Dougiamas
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 $THEME->doctype = 'html5';
-
-$THEME->yuicssmodules = array();
-
-$THEME->name = 'vanguard';
-
+$THEME->name = 'simple';
 $THEME->parents = array('bootstrap');
-
-$THEME->sheets = array('vanguard', 'settings');
-
+$THEME->sheets = array('custom');
 $THEME->supportscssoptimisation = false;
 
-$THEME->editor_sheets = array('editor');
-
-$THEME->rendererfactory = 'theme_overridden_renderer_factory';
-
-$THEME->enable_dock = false;
-
-$THEME->csspostprocess = 'vanguard_process_css';
+$THEME->editor_sheets = array('');
 
 $THEME->plugins_exclude_sheets = array(
     'block' => array(
@@ -60,104 +47,12 @@ $THEME->plugins_exclude_sheets = array(
     ),
 );
 
-$THEME->layouts = array(
-    'base' => array(
-        'file' => 'default.php',
-        'regions' => array(),
-    ),
-    'standard' => array(
-        'file' => 'default.php',
-        'regions' => array('side-pre', 'side-post'),
-        'defaultregion' => 'side-pre',
-    ),
-    'course' => array(
-        'file' => 'default.php',
-        'regions' => array('side-pre', 'side-post'),
-        'defaultregion' => 'side-pre'
-    ),
-    'coursecategory' => array(
-        'file' => 'default.php',
-        'regions' => array('side-pre', 'side-post'),
-        'defaultregion' => 'side-pre',
-    ),
-    'incourse' => array(
-        'file' => 'default.php',
-        'regions' => array('side-pre', 'side-post'),
-        'defaultregion' => 'side-pre',
-    ),
-    'frontpage' => array(
-        'file' => 'home.php',
-        'regions' => array('side-pre', 'side-post'),
-        'defaultregion' => 'side-pre',
-         'options' => array('nonavbar'=>true, 'langmenu'=>true),
-    ),
-    'admin' => array(
-        'file' => 'default.php',
-        'regions' => array('side-pre'),
-        'defaultregion' => 'side-pre',
-    ),
-    'mydashboard' => array(
-        'file' => 'default.php',
-        'regions' => array('side-pre', 'side-post'),
-        'defaultregion' => 'side-pre',
-        'options' => array('langmenu'=>true),
-    ),
-    'mypublic' => array(
-        'file' => 'default.php',
-        'regions' => array('side-pre', 'side-post'),
-        'defaultregion' => 'side-pre',
-    ),
-    'login' => array(
-        'file' => 'default.php',
-        'regions' => array(),
-        'options' => array('langmenu'=>true),
-        'options' => array('nonavbar'=>true, 'noheader'=>true),
-    ),
-    'popup' => array(
-        'file' => 'default.php',
-        'regions' => array(),
-        'options' => array('nofooter'=>true, 'noblocks'=>true, 'nonavbar'=>true),
-    ),
-    'frametop' => array(
-        'file' => 'default.php',
-        'regions' => array(),
-        'options' => array('nofooter'=>true),
-    ),
-    'maintenance' => array(
-        'file' => 'default.php',
-        'regions' => array(),
-        'options' => array('nofooter'=>true, 'nonavbar'=>true),
-    ),
-    'embedded' => array(
-        'theme' => 'canvas',
-        'file' => 'embedded.php',
-        'regions' => array(),
-        'options' => array('nofooter'=>true, 'nonavbar'=>true),
-    ),
-    'print' => array(
-        'file' => 'default.php',
-        'regions' => array(),
-        'options' => array('nofooter'=>true, 'nonavbar'=>false, 'noblocks'=>true),
-    ),
-    'redirect' => array(
-        'file' => 'default.php',
-        'regions' => array(),
-        'options' => array('nofooter'=>true, 'nonavbar'=>false, 'noblocks'=>true),
-    ),
-    'report' => array(
-        'file' => 'default.php',
-        'regions' => array('side-pre'),
-        'defaultregion' => 'side-pre',
-    ),
-    // The pagelayout used for safebrowser and securewindow.
-    'secure' => array(
-        'file' => 'default.php',
-        'regions' => array('side-pre', 'side-post'),
-        'defaultregion' => 'side-pre',
-        'options' => array('nofooter'=>true, 'nonavbar'=>true, 'nocustommenu'=>true,
-                           'nologinlinks'=>true, 'nocourseheaderfooter'=>true),
-    ),
-);
+$THEME->rendererfactory = 'theme_overridden_renderer_factory';
 
-$THEME->javascripts_footer = array('bootstrapengine', 'moodlebootstrap', 'bootstrapcollapse', 'bootstrapdropdown', 'headercollapse');
-
+$useragent = '';
+if (!empty($_SERVER['HTTP_USER_AGENT'])) {
+    $useragent = $_SERVER['HTTP_USER_AGENT'];
+}
+if (strpos($useragent, 'MSIE 8') || strpos($useragent, 'MSIE 7')) {
+    $THEME->javascripts[] = 'html5shiv';
+}
