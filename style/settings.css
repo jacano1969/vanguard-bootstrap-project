@@ -1,0 +1,13 @@
+/* Undo Bootstrap Styles
+-------------------------*/
+
+#page-footer .validators ul,
+#page-footer .purgecaches {
+    float: none;
+    text-align: center;
+}
+
+/* Custom CSS Settings
+-------------------------*/
+[[setting:customcss]]
+
